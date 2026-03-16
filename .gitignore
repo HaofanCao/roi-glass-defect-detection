@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+.DS_Store
+Thumbs.db
+
+data/raw_input/raw_data_glass_defect/
+outputs/formal_run_v1_generated/
+models/glass_detector_v1/last.pt
+models/glass_detector_v1/*.tmp

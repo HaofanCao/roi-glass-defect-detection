@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="920" viewBox="0 0 2000 920" role="img" aria-labelledby="title desc">
+  <title id="title">Glass defect detection pipeline overview</title>
+  <desc id="desc">Publication-style overview of the training and inference pipeline for ROI-based glass defect detection and fixed-size cropping.</desc>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L0,10 L8,5 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect width="2000" height="920" fill="#ffffff"/>
+  <rect x="34" y="28" width="1932" height="864" rx="36" fill="#ffffff" stroke="#dbe4ee" stroke-width="2"/>
+
+  <text x="92" y="94" font-family="Segoe UI, Arial, sans-serif" font-size="54" font-weight="700" fill="#0f172a">
+    Glass Defect Detection Pipeline
+  </text>
+  <text x="92" y="138" font-family="Segoe UI, Arial, sans-serif" font-size="24" fill="#64748b">
+    Fixed-camera geometry, per-camera ROI, detector-first cropping with heuristic fallback
+  </text>
+
+  <rect x="86" y="192" width="1454" height="284" rx="32" fill="#f8fafc" stroke="#dbe4ee" stroke-width="2"/>
+  <rect x="86" y="526" width="1454" height="334" rx="32" fill="#f8fafc" stroke="#dbe4ee" stroke-width="2"/>
+  <rect x="1584" y="192" width="318" height="668" rx="28" fill="#fbfdff" stroke="#dbe4ee" stroke-width="2"/>
+
+  <rect x="116" y="170" width="136" height="42" rx="21" fill="#dbeafe"/>
+  <text x="184" y="197" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#1d4ed8">
+    TRAINING
+  </text>
+
+  <rect x="116" y="504" width="148" height="42" rx="21" fill="#dcfce7"/>
+  <text x="190" y="531" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="19" font-weight="700" fill="#15803d">
+    INFERENCE
+  </text>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <rect x="118" y="256" width="160" height="124" rx="24" fill="#eff6ff" stroke="#7dd3fc" stroke-width="3"/>
+    <text x="198" y="304" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Raw Frames</text>
+    <text x="198" y="336" text-anchor="middle" font-size="16" fill="#475569">2448x2048</text>
+    <text x="198" y="360" text-anchor="middle" font-size="16" fill="#475569">fixed cameras</text>
+
+    <rect x="306" y="256" width="170" height="124" rx="24" fill="#ecfeff" stroke="#5eead4" stroke-width="3"/>
+    <text x="391" y="304" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Band Estimate</text>
+    <text x="391" y="336" text-anchor="middle" font-size="16" fill="#475569">row mean</text>
+    <text x="391" y="360" text-anchor="middle" font-size="16" fill="#475569">per-camera median</text>
+
+    <rect x="504" y="256" width="160" height="124" rx="24" fill="#ecfeff" stroke="#5eead4" stroke-width="3"/>
+    <text x="584" y="304" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Fixed ROI</text>
+    <text x="584" y="336" text-anchor="middle" font-size="16" fill="#475569">stable vertical crop</text>
+    <text x="584" y="360" text-anchor="middle" font-size="16" fill="#475569">bright-band context</text>
+
+    <rect x="692" y="244" width="232" height="148" rx="24" fill="#fff7ed" stroke="#fdba74" stroke-width="3"/>
+    <text x="808" y="292" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Heuristic Proposal</text>
+    <text x="808" y="324" text-anchor="middle" font-size="16" fill="#475569">median reference</text>
+    <text x="808" y="348" text-anchor="middle" font-size="16" fill="#475569">black-hat + local dark</text>
+    <text x="808" y="372" text-anchor="middle" font-size="16" fill="#475569">gradient + components</text>
+
+    <rect x="952" y="256" width="170" height="124" rx="24" fill="#f8fafc" stroke="#94a3b8" stroke-width="3"/>
+    <text x="1037" y="304" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Manual Labels</text>
+    <text x="1037" y="336" text-anchor="middle" font-size="16" fill="#475569">single class</text>
+    <text x="1037" y="360" text-anchor="middle" font-size="16" fill="#475569">review + correction</text>
+
+    <rect x="1150" y="248" width="192" height="140" rx="24" fill="#eef2ff" stroke="#818cf8" stroke-width="3"/>
+    <text x="1246" y="294" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">ROI Detector</text>
+    <text x="1246" y="326" text-anchor="middle" font-size="16" fill="#475569">Faster R-CNN</text>
+    <text x="1246" y="350" text-anchor="middle" font-size="16" fill="#475569">MobileNetV3-FPN</text>
+
+    <rect x="1370" y="256" width="142" height="124" rx="24" fill="#f0fdf4" stroke="#4ade80" stroke-width="3"/>
+    <text x="1441" y="304" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Artifacts</text>
+    <text x="1441" y="336" text-anchor="middle" font-size="16" fill="#475569">best.pt</text>
+    <text x="1441" y="360" text-anchor="middle" font-size="16" fill="#475569">config + history</text>
+
+    <rect x="118" y="628" width="160" height="124" rx="24" fill="#eff6ff" stroke="#7dd3fc" stroke-width="3"/>
+    <text x="198" y="676" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Raw Frames</text>
+    <text x="198" y="708" text-anchor="middle" font-size="16" fill="#475569">same cameras</text>
+    <text x="198" y="732" text-anchor="middle" font-size="16" fill="#475569">same geometry</text>
+
+    <rect x="314" y="628" width="184" height="124" rx="24" fill="#ecfeff" stroke="#5eead4" stroke-width="3"/>
+    <text x="406" y="676" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Load ROI</text>
+    <text x="406" y="708" text-anchor="middle" font-size="16" fill="#475569">camera_band_</text>
+    <text x="406" y="732" text-anchor="middle" font-size="16" fill="#475569">estimates.json</text>
+
+    <rect x="534" y="628" width="194" height="124" rx="24" fill="#eef2ff" stroke="#818cf8" stroke-width="3"/>
+    <text x="631" y="676" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">ROI Detector</text>
+    <text x="631" y="708" text-anchor="middle" font-size="16" fill="#475569">ROI-only inference</text>
+    <text x="631" y="732" text-anchor="middle" font-size="16" fill="#475569">best scored box</text>
+
+    <polygon points="834,626 914,690 834,754 754,690" fill="#fffdf7" stroke="#fdba74" stroke-width="3"/>
+    <text x="834" y="684" text-anchor="middle" font-size="22" font-weight="700" fill="#0f172a">Score</text>
+    <text x="834" y="712" text-anchor="middle" font-size="16" fill="#475569">threshold</text>
+
+    <rect x="964" y="562" width="236" height="116" rx="24" fill="#eef2ff" stroke="#818cf8" stroke-width="3"/>
+    <text x="1082" y="608" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Detection Center</text>
+    <text x="1082" y="642" text-anchor="middle" font-size="16" fill="#475569">crop from box center</text>
+
+    <rect x="964" y="702" width="236" height="116" rx="24" fill="#fff7ed" stroke="#fdba74" stroke-width="3"/>
+    <text x="1082" y="748" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Heuristic Fallback</text>
+    <text x="1082" y="782" text-anchor="middle" font-size="16" fill="#475569">score-map centroid</text>
+
+    <rect x="1252" y="628" width="148" height="124" rx="24" fill="#f0fdf4" stroke="#4ade80" stroke-width="3"/>
+    <text x="1326" y="676" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">1200x900</text>
+    <text x="1326" y="708" text-anchor="middle" font-size="16" fill="#475569">fixed-size crop</text>
+    <text x="1326" y="732" text-anchor="middle" font-size="16" fill="#475569">ROI-aligned</text>
+
+    <rect x="1426" y="628" width="102" height="124" rx="24" fill="#f0fdf4" stroke="#4ade80" stroke-width="3"/>
+    <text x="1477" y="676" text-anchor="middle" font-size="23" font-weight="700" fill="#0f172a">Outputs</text>
+    <text x="1477" y="708" text-anchor="middle" font-size="16" fill="#475569">overlays</text>
+    <text x="1477" y="732" text-anchor="middle" font-size="16" fill="#475569">metadata</text>
+  </g>
+
+  <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M914 690 H940 V620"/>
+    <path d="M914 690 H940 V760"/>
+    <path d="M1200 620 H1226 V690"/>
+    <path d="M1200 760 H1226 V690"/>
+  </g>
+
+  <g stroke="#64748b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arrow)">
+    <path d="M278 318 H306"/>
+    <path d="M476 318 H504"/>
+    <path d="M664 318 H692"/>
+    <path d="M924 318 H952"/>
+    <path d="M1122 318 H1150"/>
+    <path d="M1342 318 H1370"/>
+
+    <path d="M278 690 H314"/>
+    <path d="M498 690 H534"/>
+    <path d="M728 690 H754"/>
+    <path d="M940 620 H964"/>
+    <path d="M940 760 H964"/>
+    <path d="M1226 690 H1252"/>
+    <path d="M1400 690 H1426"/>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="700">
+    <text x="930" y="604" fill="#4f46e5">yes</text>
+    <text x="930" y="786" fill="#c2410c">no</text>
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="1743" y="256" text-anchor="middle" font-size="24" font-weight="700" fill="#0f172a">Core Design</text>
+
+    <rect x="1618" y="300" width="250" height="82" rx="22" fill="#ecfeff" stroke="#5eead4" stroke-width="2.5"/>
+    <text x="1743" y="332" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Per-camera ROI</text>
+    <text x="1743" y="358" text-anchor="middle" font-size="15" fill="#475569">stable band-aligned crop</text>
+
+    <rect x="1618" y="400" width="250" height="82" rx="22" fill="#fff7ed" stroke="#fdba74" stroke-width="2.5"/>
+    <text x="1743" y="432" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Hybrid Scoring</text>
+    <text x="1743" y="458" text-anchor="middle" font-size="15" fill="#475569">reference + morphology + gradient</text>
+
+    <rect x="1618" y="500" width="250" height="82" rx="22" fill="#eef2ff" stroke="#818cf8" stroke-width="2.5"/>
+    <text x="1743" y="532" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Detector-first</text>
+    <text x="1743" y="558" text-anchor="middle" font-size="15" fill="#475569">learned ROI localization</text>
+
+    <rect x="1618" y="600" width="250" height="82" rx="22" fill="#fff7ed" stroke="#fdba74" stroke-width="2.5"/>
+    <text x="1743" y="632" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Fallback Path</text>
+    <text x="1743" y="658" text-anchor="middle" font-size="15" fill="#475569">recover low-score cases</text>
+
+    <rect x="1618" y="700" width="250" height="82" rx="22" fill="#f0fdf4" stroke="#4ade80" stroke-width="2.5"/>
+    <text x="1743" y="732" text-anchor="middle" font-size="18" font-weight="700" fill="#0f172a">Auditable Outputs</text>
+    <text x="1743" y="758" text-anchor="middle" font-size="15" fill="#475569">images, overlays, metadata</text>
+  </g>
+</svg>

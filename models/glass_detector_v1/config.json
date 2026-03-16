@@ -1,0 +1,18 @@
+{
+  "dataset_dir": "E:\\defect\\annotation_batch_glass_defect_v1",
+  "raw_dir": "E:\\defect\\raw_data_glass_defect",
+  "epochs": 20,
+  "batch_size": 2,
+  "learning_rate": 0.0002,
+  "weight_decay": 0.0001,
+  "sample_per_camera": 80,
+  "crop_height": 900,
+  "min_size": 800,
+  "max_size": 2048,
+  "score_threshold": 0.25,
+  "seed": 20260315,
+  "device": "cuda",
+  "resume": null,
+  "train_images": 240,
+  "val_images": 60
+}

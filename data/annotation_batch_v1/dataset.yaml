@@ -1,0 +1,5 @@
+﻿path: .
+train: train.txt
+val: val.txt
+names:
+  0: glass_defect

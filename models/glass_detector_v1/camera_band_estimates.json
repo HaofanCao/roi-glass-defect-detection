@@ -1,0 +1,62 @@
+{
+  "cam-1": {
+    "camera": "cam-1",
+    "image_height": 2048,
+    "image_width": 2448,
+    "band1_start": 496,
+    "band1_end": 727,
+    "band2_start": 1022,
+    "band2_end": 1264,
+    "crop_top": 430,
+    "crop_bottom": 1330,
+    "sample_count": 80
+  },
+  "cam1": {
+    "camera": "cam1",
+    "image_height": 2048,
+    "image_width": 2448,
+    "band1_start": 590,
+    "band1_end": 829,
+    "band2_start": 1116,
+    "band2_end": 1357,
+    "crop_top": 524,
+    "crop_bottom": 1424,
+    "sample_count": 80
+  },
+  "cam2": {
+    "camera": "cam2",
+    "image_height": 2048,
+    "image_width": 2448,
+    "band1_start": 409,
+    "band1_end": 629,
+    "band2_start": 877,
+    "band2_end": 1145,
+    "crop_top": 327,
+    "crop_bottom": 1227,
+    "sample_count": 80
+  },
+  "cam3": {
+    "camera": "cam3",
+    "image_height": 2048,
+    "image_width": 2448,
+    "band1_start": 481,
+    "band1_end": 740,
+    "band2_start": 1030,
+    "band2_end": 1255,
+    "crop_top": 418,
+    "crop_bottom": 1318,
+    "sample_count": 80
+  },
+  "cam4": {
+    "camera": "cam4",
+    "image_height": 2048,
+    "image_width": 2448,
+    "band1_start": 430,
+    "band1_end": 643,
+    "band2_start": 911,
+    "band2_end": 1151,
+    "crop_top": 340,
+    "crop_bottom": 1240,
+    "sample_count": 80
+  }
+}
