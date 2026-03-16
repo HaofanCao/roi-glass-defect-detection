@@ -89,5 +89,3 @@ This repository does not bundle:
 
 - the full raw production dataset
 - the full generated crop dataset
-- intermediate smoke-test folders
-- earlier audit rounds and temporary experiment outputs
