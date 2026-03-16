@@ -64,7 +64,6 @@ This bundle intentionally does **not** include:
 
 - The full raw production dataset
 - The full generated crop dataset
-- Old smoke tests, audit rounds, and temporary experiment folders
 
 ---
 
